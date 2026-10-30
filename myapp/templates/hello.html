@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>My First Design</title>
+    <style>
+        body {background: #f0f2f5; font-family: sans-serif; text-align: center; padding-top: 100px;}
+         .card {background: white; width: 400px; margin: auto; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0,1); }
+         h1 { color: #0a66c2;}
+         input { padding: 10px; width: 70%; border-radius: 8px; border: 1px solid #ccc; margin-top: 15px;}
+         button { padding: 10px 20px; background: #0a66c2; color: white; border: none; border-radius: 8px; margin-top: 10px; cursor: pointer;}
+         .list { margin-top: 20px; text-align: left; background: #f9f9f9; padding: 15px; border-radius: 10px;}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Assalam-o-Alaikum! {{ name }}</h1>
+        <p>Kohat syyy Django Seekh raha hun!</p>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Enter you Name" required>
+            <br>
+            <button type="submit">ENTER</button>
+        </form>
+        {% if visitors %}
+        <div class="list">
+            <b>Recent Visitors:</b><br>
+            {% for v in visitors%}
+            - {{ v.name}} <br>
+            {% endfor%}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
